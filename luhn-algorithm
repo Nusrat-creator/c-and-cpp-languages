@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main(){
+    int  a;  // Changed to long long for large numbers
+    int total = 0;
+    int count = 0;
+    int i = 0;
+    printf("Please enter a number\n");
+    scanf("%d",&a);
+    
+    if(a <= 0){
+        return 1;
+    }
+    
+    // Count digits
+    int temp_a = a;  // Save a copy
+    while(temp_a != 0){
+        temp_a /= 10;
+        count++;
+    }
+    int temp = a%10;
+    while(i<count-1){
+        if((a%10)*2 >=10){
+            total = 1 + (((a%10)*2)%10);
+            a/=10;
+            i++;
+        }
+        else{
+            total = total + (a%10)*2;
+            a/=10;
+            i++;
+        }
+    }
+    if((total+temp)%10 == 0){
+        printf("It is a valid card!");
+    }
+    else{
+        printf("It is not a vaid card!");
+    }
+}
